@@ -18,7 +18,6 @@ export default function startGame() {
         invokeText('');
 
         const round = logicTheGame(choice, randomChoiceCPU())
-        console.log(round)
 
         if (round === 0) {
             invokeFinalButtons();
