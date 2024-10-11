@@ -18,24 +18,32 @@ export default function startGame() {
         invokeText('');
 
         const round = logicTheGame(choice, randomChoiceCPU())
+        console.log(round)
+
+        if (round === 0) {
+            invokeFinalButtons();
+            return;
+        }
 
         if (round) {
             scorePlayer.innerHTML++;
         } else if (!round) {
             scoreCpu.innerHTML++;
-        } else {
-            return;
         }
 
-        removeButtons();
-
-        invokeButton('Parar');
-        invokeButton('Continuar');
-        continueGame();
-        endGame();
+        invokeFinalButtons();
     }
 
     document.querySelector('.pedra').addEventListener('click', () => handleChoice(op[2]));
     document.querySelector('.papel').addEventListener('click', () => handleChoice(op[1]));
     document.querySelector('.tesoura').addEventListener('click', () => handleChoice(op[0]));
+}
+
+function invokeFinalButtons() {
+    removeButtons();
+
+    invokeButton('Parar');
+    invokeButton('Continuar');
+    continueGame();
+    endGame();
 }
